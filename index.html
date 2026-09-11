@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Djibouti Palace | Restaurant</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #faf9f6;
+            color: #222;
+        }
+
+        /* NAVIGATION */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(15, 15, 15, 0.95);
+            color: white;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #d4a017;
+        }
+
+        /* ACCUEIL */
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+
+            background:
+                linear-gradient(rgba(0,0,0,0.58), rgba(0,0,0,0.58)),
+                url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4")
+                center/cover;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 21px;
+            margin-bottom: 35px;
+        }
+
+        .button {
+            display: inline-block;
+            background: #d4a017;
+            color: white;
+            padding: 16px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            background: #b8860b;
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 90px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+
+        .section-title p {
+            color: #777;
+        }
+
+        /* À PROPOS */
+        .about {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .about img {
+            width: 50%;
+            border-radius: 15px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            font-size: 38px;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* MENU */
+        #menu {
+            background: white;
+        }
+
+        .menu-container {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 300px;
+            background: #faf9f6;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .price {
+            margin-top: 18px;
+            color: #b8860b;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* AVIS */
+        .reviews {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .review {
+            background: white;
+            width: 300px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+        }
+
+        .stars {
+            color: #d4a017;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .review p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .review strong {
+            font-size: 14px;
+        }
+
+        /* CONTACT */
+        #contact {
+            background: #151515;
+            color: white;
+            text-align: center;
+        }
+
+        #contact h2 {
+            font-size: 40px;
+            margin-bottom: 25px;
+        }
+
+        .contact-info {
+            margin-bottom: 30px;
+            line-height: 2;
+            color: #ddd;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #0b0b0b;
+            color: #aaa;
+            text-align: center;
+            padding: 25px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 750px) {
+
+            header {
+                padding: 15px 5%;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav a {
+                margin: 0 7px;
+                font-size: 13px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .about {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .about img {
+                width: 100%;
+            }
+
+            .about-text h2 {
+                font-size: 30px;
+            }
+
+            section {
+                padding: 70px 5%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<header>
+
+    <div class="logo">
+        DJIBOUTI PALACE
+    </div>
+
+    <nav>
+        <a href="#accueil">Accueil</a>
+        <a href="#apropos">À propos</a>
+        <a href="#menu">Menu</a>
+        <a href="#avis">Avis</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+</header>
+
+
+<!-- ACCUEIL -->
+<section class="hero" id="accueil">
+
+    <div class="hero-content">
+
+        <h1>Le goût qui rassemble</h1>
+
+        <p>
+            Une expérience gastronomique unique au cœur de Djibouti.
+        </p>
+
+        <a href="#menu" class="button">
+            Découvrir notre menu
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- À PROPOS -->
+<section id="apropos">
+
+    <div class="about">
+
+        <img
+            src="https://images.unsplash.com/photo-1552566626-52f8b828add9"
+            alt="Restaurant"
+        >
+
+        <div class="about-text">
+
+            <h2>Bienvenue chez nous</h2>
+
+            <p>
+                Djibouti Palace est un restaurant moderne qui
+                mélange les saveurs locales et internationales.
+            </p>
+
+            <br>
+
+            <p>
+                Notre objectif est simple : vous offrir une
+                expérience chaleureuse, des produits de qualité
+                et des plats préparés avec passion.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MENU -->
+<section id="menu">
+
+    <div class="section-title">
+
+        <h2>Notre Menu</h2>
+
+        <p>
+            Découvrez quelques-unes de nos spécialités.
+        </p>
+
+    </div>
+
+
+    <div class="menu-container">
+
+        <div class="card">
+
+            <img
+                src="https://images.unsplash.com/photo-1544943910-4c1dc44aab44"
+                alt="Poisson grillé"
+            >
+
+            <div class="card-content">
+
+                <h3>Poisson grillé</h3>
+
+                <p>
+                    Poisson frais accompagné de riz,
+                    légumes et sauce maison.
+                </p>
+
+                <div class="price">
+                    3 500 FDJ
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <img
+                src="https://images.unsplash.com/photo-1598103442097-8b74394b95c6"
+                alt="Poulet rôti"
+            >
+
+            <div class="card-content">
+
+                <h3>Poulet rôti</h3>
+
+                <p>
+                    Poulet tendre, frites maison
+                    et salade fraîche.
+                </p>
+
+                <div class="price">
+                    3 000 FDJ
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <img
+                src="https://images.unsplash.com/photo-1547592180-85f173990554"
+                alt="Plat traditionnel"
+            >
+
+            <div class="card-content">
+
+                <h3>Plat traditionnel</h3>
+
+                <p>
+                    Une spécialité inspirée
+                    des saveurs de la région.
+                </p>
+
+                <div class="price">
+                    2 500 FDJ
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- AVIS -->
+<section id="avis">
+
+    <div class="section-title">
+
+        <h2>Nos clients parlent de nous</h2>
+
+        <p>
+            Une expérience qui donne envie de revenir.
+        </p>
+
+    </div>
+
+
+    <div class="reviews">
+
+        <div class="review">
+
+            <div class="stars">
+                ★★★★★
+            </div>
+
+            <p>
+                « Une très belle expérience. Les plats
+                étaient délicieux et le service excellent. »
+            </p>
+
+            <strong>— Ahmed</strong>
+
+        </div>
+
+
+        <div class="review">
+
+            <div class="stars">
+                ★★★★★
+            </div>
+
+            <p>
+                « Très beau restaurant, ambiance agréable
+                et cuisine de qualité. »
+            </p>
+
+            <strong>— Mariam</strong>
+
+        </div>
+
+
+        <div class="review">
+
+            <div class="stars">
+                ★★★★★
+            </div>
+
+            <p>
+                « J'ai beaucoup aimé le service et les
+                plats. Je reviendrai certainement. »
+            </p>
+
+            <strong>— Hassan</strong>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact">
+
+    <h2>Réservez votre table</h2>
+
+    <div class="contact-info">
+
+        📍 Djibouti-ville<br>
+
+        📞 +253 XX XX XX XX<br>
+
+        🕐 Tous les jours : 11h00 – 23h00
+
+    </div>
+
+    <a
+        class="button"
+        href="https://wa.me/25300000000"
+        target="_blank"
+    >
+        Réserver sur WhatsApp
+    </a>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <p>
+        © 2026 Djibouti Palace — Tous droits réservés.
+    </p>
+
+</footer>
+
+</body>
+</html>
