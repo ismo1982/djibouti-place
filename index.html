@@ -1,575 +1,384 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Djibouti Palace | Restaurant</title>
+<title>Djibouti Palace | Restaurant</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
+html {
+    scroll-behavior: smooth;
+}
+section {
+    scroll-margin-top: 90px;
+}
+body {
+    font-family: Arial, sans-serif;
+    background: #f8f8f8;
+    color: #222;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #faf9f6;
-            color: #222;
-        }
+/* NAVIGATION */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(15,15,15,0.95);
+    color: white;
+    z-index: 1000;
+}
 
-        /* NAVIGATION */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 20px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(15, 15, 15, 0.95);
-            color: white;
-            z-index: 1000;
-        }
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
 
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            letter-spacing: 2px;
-        }
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: bold;
+}
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 25px;
-            font-size: 15px;
-        }
+nav a:hover {
+    color: #f5c542;
+}
 
-        nav a:hover {
-            color: #d4a017;
-        }
+/* ACCUEIL */
+.hero {
+    height: 100vh;
+    background:
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+        url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80")
+        center/cover;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
 
-        /* ACCUEIL */
-        .hero {
-            height: 100vh;
-            min-height: 600px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
+.hero-content h1 {
+    font-size: 60px;
+    margin-bottom: 15px;
+}
 
-            background:
-                linear-gradient(rgba(0,0,0,0.58), rgba(0,0,0,0.58)),
-                url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4")
-                center/cover;
-        }
+.hero-content p {
+    font-size: 21px;
+    margin-bottom: 30px;
+}
 
-        .hero-content {
-            max-width: 800px;
-            padding: 20px;
-        }
+.button {
+    display: inline-block;
+    background: #f5c542;
+    color: #111;
+    padding: 15px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+}
 
-        .hero h1 {
-            font-size: 64px;
-            margin-bottom: 20px;
-        }
+/* SECTIONS */
+section {
+    padding: 90px 8%;
+}
 
-        .hero p {
-            font-size: 21px;
-            margin-bottom: 35px;
-        }
+.section-title {
+    text-align: center;
+    font-size: 38px;
+    margin-bottom: 45px;
+}
 
-        .button {
-            display: inline-block;
-            background: #d4a017;
-            color: white;
-            padding: 16px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
+/* MENU */
+.menu {
+    background: white;
+}
 
-        .button:hover {
-            transform: translateY(-3px);
-            background: #b8860b;
-        }
+.menu-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
 
-        /* SECTIONS */
-        section {
-            padding: 90px 8%;
-        }
+.menu-card {
+    background: #f8f8f8;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
+.menu-card h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
 
-        .section-title h2 {
-            font-size: 40px;
-            margin-bottom: 12px;
-        }
+.menu-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+.menu-card img {
+    transition: transform 0.3s ease;
+}
 
-        .section-title p {
-            color: #777;
-        }
+.menu-card:hover img {
+    transform: scale(1.05);
+}
 
-        /* À PROPOS */
-        .about {
-            display: flex;
-            align-items: center;
-            gap: 60px;
-            max-width: 1100px;
-            margin: auto;
-        }
+.menu-card p {
+    color: #666;
+    margin-bottom: 15px;
+}
 
-        .about img {
-            width: 50%;
-            border-radius: 15px;
-        }
+.price {
+    color: #c99b20;
+    font-size: 20px;
+    font-weight: bold;
+}
 
-        .about-text {
-            flex: 1;
-        }
+/* À PROPOS */
+.about {
+    text-align: center;
+    background: #f1f1f1;
+}
 
-        .about-text h2 {
-            font-size: 38px;
-            margin-bottom: 20px;
-        }
+.about p {
+    max-width: 750px;
+    margin: auto;
+    line-height: 1.8;
+    font-size: 18px;
+}
 
-        .about-text p {
-            line-height: 1.8;
-            color: #555;
-        }
+/* CONTACT */
+.contact {
+    text-align: center;
+    background: #151515;
+    color: white;
+}
 
-        /* MENU */
-        #menu {
-            background: white;
-        }
+.contact p {
+    margin: 12px 0;
+    font-size: 18px;
+}
 
-        .menu-container {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-        }
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 25px;
+    background: #0b0b0b;
+    color: white;
+}
 
-        .card {
-            width: 300px;
-            background: #faf9f6;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: 0.3s;
-        }
+/* MOBILE */
+@media (max-width: 768px) {
 
-        .card:hover {
-            transform: translateY(-8px);
-        }
+    header {
+        padding: 10px 5%;
+        flex-direction: column;
+        gap: 5px;
+    }
 
-        .card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
+    .logo {
+        font-size: 18px;
+    }
 
-        .card-content {
-            padding: 25px;
-        }
+    nav a {
+        margin-left: 8px;
+        font-size: 13px;
+    }
 
-        .card h3 {
-            font-size: 22px;
-            margin-bottom: 10px;
-        }
+    .hero-content h1 {
+        font-size: 40px;
+    }
 
-        .card p {
-            color: #666;
-            line-height: 1.5;
-        }
+    .hero-content p {
+        font-size: 17px;
+    }
 
-        .price {
-            margin-top: 18px;
-            color: #b8860b;
-            font-size: 20px;
-            font-weight: bold;
-        }
+    .menu-container {
+        grid-template-columns: repeat(2, 1fr);
+    }.menu-card {
+  padding: 10px;
+}
 
-        /* AVIS */
-        .reviews {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-        }
+.menu-card img {
+    height: 180px !important;
+}
 
-        .review {
-            background: white;
-            width: 300px;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
-        }
-
-        .stars {
-            color: #d4a017;
-            font-size: 20px;
-            margin-bottom: 15px;
-        }
-
-        .review p {
-            color: #555;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-
-        .review strong {
-            font-size: 14px;
-        }
-
-        /* CONTACT */
-        #contact {
-            background: #151515;
-            color: white;
-            text-align: center;
-        }
-
-        #contact h2 {
-            font-size: 40px;
-            margin-bottom: 25px;
-        }
-
-        .contact-info {
-            margin-bottom: 30px;
-            line-height: 2;
-            color: #ddd;
-        }
-
-        /* FOOTER */
-        footer {
-            background: #0b0b0b;
-            color: #aaa;
-            text-align: center;
-            padding: 25px;
-        }
-
-        /* MOBILE */
-        @media (max-width: 750px) {
-
-            header {
-                padding: 15px 5%;
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            nav a {
-                margin: 0 7px;
-                font-size: 13px;
-            }
-
-            .hero h1 {
-                font-size: 42px;
-            }
-
-            .hero p {
-                font-size: 17px;
-            }
-
-            .about {
-                flex-direction: column;
-                gap: 30px;
-            }
-
-            .about img {
-                width: 100%;
-            }
-
-            .about-text h2 {
-                font-size: 30px;
-            }
-
-            section {
-                padding: 70px 5%;
-            }
-        }
-    </style>
+    section {
+        padding: 70px 5%;
+    }
+}
+</style>
 </head>
 
 <body>
 
-<!-- NAVIGATION -->
 <header>
-
-    <div class="logo">
-        DJIBOUTI PALACE
-    </div>
+    <div class="logo">DJIBOUTI PALACE</div>
 
     <nav>
         <a href="#accueil">Accueil</a>
-        <a href="#apropos">À propos</a>
         <a href="#menu">Menu</a>
-        <a href="#avis">Avis</a>
+        <a href="#apropos">À propos</a>
         <a href="#contact">Contact</a>
     </nav>
-
 </header>
-
 
 <!-- ACCUEIL -->
 <section class="hero" id="accueil">
-
     <div class="hero-content">
-
         <h1>Le goût qui rassemble</h1>
-
-        <p>
-            Une expérience gastronomique unique au cœur de Djibouti.
-        </p>
-
-        <a href="#menu" class="button">
-            Découvrir notre menu
-        </a>
-
+        <p>Une expérience gastronomique unique au cœur de Djibouti.</p>
+        <a href="#menu" class="button">Découvrir notre menu</a>
     </div>
-
 </section>
-
-
-<!-- À PROPOS -->
-<section id="apropos">
-
-    <div class="about">
-
-        <img
-            src="https://images.unsplash.com/photo-1552566626-52f8b828add9"
-            alt="Restaurant"
-        >
-
-        <div class="about-text">
-
-            <h2>Bienvenue chez nous</h2>
-
-            <p>
-                Djibouti Palace est un restaurant moderne qui
-                mélange les saveurs locales et internationales.
-            </p>
-
-            <br>
-
-            <p>
-                Notre objectif est simple : vous offrir une
-                expérience chaleureuse, des produits de qualité
-                et des plats préparés avec passion.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
 
 <!-- MENU -->
-<section id="menu">
+<section class="menu" id="menu">
 
-    <div class="section-title">
-
-        <h2>Notre Menu</h2>
-
-        <p>
-            Découvrez quelques-unes de nos spécialités.
-        </p>
-
-    </div>
-
+    <h2 class="section-title">Notre Menu</h2>
 
     <div class="menu-container">
 
-        <div class="card">
-
-            <img
-                src="https://images.unsplash.com/photo-1544943910-4c1dc44aab44"
-                alt="Poisson grillé"
-            >
-
-            <div class="card-content">
-
-                <h3>Poisson grillé</h3>
-
-                <p>
-                    Poisson frais accompagné de riz,
-                    légumes et sauce maison.
-                </p>
-
-                <div class="price">
-                    3 500 FDJ
-                </div>
-
-            </div>
-
+        <div class="menu-card">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80" alt="Poulet grillé" style="width:100%; height:200px; object-fit:cover; border-radius:12px; margin-bottom:15px;">
+            <h3>🍗 Poulet Grillé</h3>
+            <p>Poulet grillé accompagné de riz et de légumes.</p>
+            <div class="price">2 500 FDJ</div><a href="https://wa.me/25300000000?text=Bonjour%2C%20je%20souhaite%20commander%20le%20Poulet%20Grillé%20à%202500%20FDJ." 
+target="_blank"
+style="display:inline-block; margin-top:15px; padding:10px 20px; background:#25D366; color:white; text-decoration:none; border-radius:25px; font-weight:bold;">
+Commander sur WhatsApp
+</a>
         </div>
 
-
-        <div class="card">
-
-            <img
-                src="https://images.unsplash.com/photo-1598103442097-8b74394b95c6"
-                alt="Poulet rôti"
-            >
-
-            <div class="card-content">
-
-                <h3>Poulet rôti</h3>
-
-                <p>
-                    Poulet tendre, frites maison
-                    et salade fraîche.
-                </p>
-
-                <div class="price">
-                    3 000 FDJ
-                </div>
-
-            </div>
-
+        <div class="menu-card"><img src="https://images.unsplash.com/photo-1551892374-ecf8754cf8b0?auto=format&fit=crop&w=600&q=80" alt="Pâtes à la viande" style="width:100%; height:200px; object-fit:cover; border-radius:12px; margin-bottom:15px;">
+            <h3>🍝 Pâtes à la viande</h3>
+            <p>Pâtes fraîches avec une délicieuse sauce maison.</p>
+            <div class="price">2 000 FDJ</div><a href="https://wa.me/25300000000?text=Bonjour%2C%20je%20souhaite%20commander%20les%20Pâtes%20à%20la%20viande%20à%202000%20FDJ."
+target="_blank"
+style="display:inline-block; margin-top:15px; padding:10px 20px; background:#25D366; color:white; text-decoration:none; border-radius:25px; font-weight:bold;">
+Commander sur WhatsApp
+</a>
         </div>
 
+        <div class="menu-card"><img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80" alt="Pizza Palace" style="width:100%; height:200px; object-fit:cover; border-radius:12px; margin-bottom:15px;">
+            <h3>🍕 Pizza Palace</h3>
+            <p>Pizza généreuse préparée avec des ingrédients frais.</p>
+            <div class="price">3 000 FDJ</div><a href="https://wa.me/25300000000?text=Bonjour%2C%20je%20souhaite%20commander%20la%20Pizza%20Palace%20à%203000%20FDJ."
+target="_blank"
+style="display:inline-block; margin-top:15px; padding:10px 20px; background:#25D366; color:white; text-decoration:none; border-radius:25px; font-weight:bold;">
+Commander sur WhatsApp
+</a>
+        </div>
 
-        <div class="card">
+        <div class="menu-card"><img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=600&q=80" alt="Steak Grillé" style="width:100%; height:200px; object-fit:cover; border-radius:12px; margin-bottom:15px;">
+            <h3>🥩 Steak Grillé</h3>
+            <p>Steak tendre accompagné de frites et de salade.</p>
+            <div class="price">3 500 FDJ</div><a href="https://wa.me/25300000000?text=Bonjour%2C%20je%20souhaite%20commander%20le%20Steak%20Grillé%20à%203500%20FDJ."
+target="_blank"
+style="display:inline-block; margin-top:15px; padding:10px 20px; background:#25D366; color:white; text-decoration:none; border-radius:25px; font-weight:bold;">
+Commander sur WhatsApp
+</a>
+        </div>
 
-            <img
-                src="https://images.unsplash.com/photo-1547592180-85f173990554"
-                alt="Plat traditionnel"
-            >
+        <div class="menu-card"><img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=600&q=80" alt="Riz Spécial" style="width:100%; height:200px; object-fit:cover; border-radius:12px; margin-bottom:15px;">
+            <h3>🍚 Riz Spécial</h3>
+            <p>Riz parfumé accompagné de viande et de légumes.</p>
+            <div class="price">2 500 FDJ</div><a href="https://wa.me/25300000000?text=Bonjour%2C%20je%20souhaite%20commander%20le%20Riz%20Spécial%20à%202500%20FDJ."
+target="_blank"
+style="display:inline-block; margin-top:15px; padding:10px 20px; background:#25D366; color:white; text-decoration:none; border-radius:25px; font-weight:bold;">
+Commander sur WhatsApp
+</a>
+        </div>
 
-            <div class="card-content">
-
-                <h3>Plat traditionnel</h3>
-
-                <p>
-                    Une spécialité inspirée
-                    des saveurs de la région.
-                </p>
-
-                <div class="price">
-                    2 500 FDJ
-                </div>
-
-            </div>
-
+        <div class="menu-card"><img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=600&q=80" alt="Dessert Maison" style="width:100%; height:200px; object-fit:cover; border-radius:12px; margin-bottom:15px;">
+            <h3>🍰 Dessert Maison</h3>
+            <p>Un dessert préparé avec soin par notre équipe.</p>
+            <div class="price">1 000 FDJ</div><a href="https://wa.me/25300000000?text=Bonjour%2C%20je%20souhaite%20commander%20le%20Dessert%20Maison%20à%201000%20FDJ."
+target="_blank"
+style="display:inline-block; margin-top:15px; padding:10px 20px; background:#25D366; color:white; text-decoration:none; border-radius:25px; font-weight:bold;">
+Commander sur WhatsApp
+</a>
         </div>
 
     </div>
 
 </section>
+<!-- AVIS CLIENTS -->
+<section class="reviews">
+    <h2 class="section-title">⭐ Avis de nos clients</h2>
 
+    <div class="">
 
-<!-- AVIS -->
-<section id="avis">
-
-    <div class="section-title">
-
-        <h2>Nos clients parlent de nous</h2>
-
-        <p>
-            Une expérience qui donne envie de revenir.
-        </p>
-
-    </div>
-
-
-    <div class="reviews">
-
-        <div class="review">
-
-            <div class="stars">
-                ★★★★★
-            </div>
-
-            <p>
-                « Une très belle expérience. Les plats
-                étaient délicieux et le service excellent. »
-            </p>
-
-            <strong>— Ahmed</strong>
-
+        <div class="menu-card">
+            <p>« Un excellent restaurant, la nourriture est délicieuse ! »</p>
+            <h3>— Ahmed</h3>
+            <p>⭐⭐⭐⭐⭐</p>
         </div>
 
-
-        <div class="review">
-
-            <div class="stars">
-                ★★★★★
-            </div>
-
-            <p>
-                « Très beau restaurant, ambiance agréable
-                et cuisine de qualité. »
-            </p>
-
-            <strong>— Mariam</strong>
-
+        <div class="menu-card">
+            <p>« Très bon accueil et service rapide. Je recommande ! »</p>
+            <h3>— Fatou</h3>
+            <p>⭐⭐⭐⭐⭐</p>
         </div>
 
-
-        <div class="review">
-
-            <div class="stars">
-                ★★★★★
-            </div>
-
-            <p>
-                « J'ai beaucoup aimé le service et les
-                plats. Je reviendrai certainement. »
-            </p>
-
-            <strong>— Hassan</strong>
-
+        <div class="menu-card">
+            <p>« La pizza était excellente, je reviendrai ! »</p>
+            <h3>— Mohamed</h3>
+            <p>⭐⭐⭐⭐⭐</p>
         </div>
 
     </div>
+</section>
+<section class="about" id="apropos">
+
+    <h2 class="section-title">À propos de nous</h2>
+
+    <p>
+        Bienvenue au Djibouti Palace, un restaurant où la qualité,
+        le goût et l'accueil sont au cœur de notre mission.
+        Venez partager un moment exceptionnel avec votre famille
+        et vos amis.
+    </p>
 
 </section>
-
 
 <!-- CONTACT -->
-<section id="contact">
+<section class="contact" id="contact">
 
-    <h2>Réservez votre table</h2>
+    <h2 class="section-title">Contactez-nous</h2>
 
-    <div class="contact-info">
+    <p>📍 Djibouti-ville</p>
+    <p>📞 +253 XX XX XX XX</p>
+    <p>🕐 Tous les jours : 11h00 – 23h00</p>
 
-        📍 Djibouti-ville<br>
-
-        📞 +253 XX XX XX XX<br>
-
-        🕐 Tous les jours : 11h00 – 23h00
-
-    </div>
+    <br>
 
     <a
         class="button"
         href="https://wa.me/25300000000"
-        target="_blank"
-    >
-        Réserver sur WhatsApp
+        target="_blank">
+        Nous contacter sur WhatsApp
     </a>
 
 </section>
 
-
-<!-- FOOTER -->
 <footer>
-
-    <p>
-        © 2026 Djibouti Palace — Tous droits réservés.
-    </p>
-
+    <p>© 2026 Djibouti Palace — Tous droits réservés.</p>
 </footer>
 
 </body>
